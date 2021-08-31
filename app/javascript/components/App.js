@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import Home from './pages/Home'
+
+import { 
+  BrowserRouter as Router,
+  Route, 
+  Switch } 
+from 'react-router-dom';
 
 class App extends Component {
   constructor(){
@@ -8,22 +15,22 @@ class App extends Component {
     }
   }
 
-  getApartments = () => {
-    fetch("http://localhost:3000/apartments")
-    .then(response => {
-      return response.json()
-    })
-    .then(apartmentsArray => {
-      // set the state with the data from the backend into the empty array
-      this.setState({ apartments: apartmentsArray })
-    })
-    .catch(errors => {
-      console.log("index errors:", errors)
-    })
-  }
-  componentDidMount(){
-    this.getApartments()
-  }
+  // getApartments = () => {
+  //   fetch("http://localhost:3000/apartments")
+  //   .then(response => {
+  //     return response.json()
+  //   })
+  //   .then(apartmentsArray => {
+  //     // set the state with the data from the backend into the empty array
+  //     this.setState({ apartments: apartmentsArray })
+  //   })
+  //   .catch(errors => {
+  //     console.log("index errors:", errors)
+  //   })
+  // }
+  // componentDidMount(){
+  //   this.getApartments()
+  // }
 
   render() {
     const {
@@ -35,10 +42,16 @@ class App extends Component {
     } = this.props
 
     console.log(current_user)
-    console.log(this.state.apartments)
+    //console.log(this.state.apartments)
     return (
       <>
-        <h1>Hello World</h1>
+        <Router>
+          <Switch> 
+            <Route exact path='/' component={ Home } />
+          </Switch>
+        </Router>
+
+        {/* <h1>Hello World</h1>
         { logged_in &&
           <div>
             <a href={sign_out_route}>Sign Out</a>
@@ -48,7 +61,7 @@ class App extends Component {
           <div>
             <a href={sign_in_route}>Sign In</a>
           </div>
-        }
+        } */}
         
       </>
     );
