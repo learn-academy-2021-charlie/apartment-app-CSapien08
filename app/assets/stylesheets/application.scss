@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap';
+
+ header{
+     display: flex;
+     justify-content: space-between;
+     border-bottom: solid;
+     border-width: 2px;
+
+ }
+
+ .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-right: 30px;
+}
+
+footer {
+    font-size: 20px;
+    position: fixed;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    background-color: #3895D3;
+
+}
+  
+footer a {
+    color: white;
+}
