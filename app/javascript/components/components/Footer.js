@@ -9,7 +9,7 @@ class Footer extends Component {
                     <NavLink to='/'>&copy; 2021 Apartment World</NavLink>
                 </ul>
                 <ul>
-                    <NavLink to='/apartmentshow'>Apartments For Rent</NavLink>
+                    <NavLink to='/apartmentindex'>Apartments For Rent</NavLink>
                 </ul>
             </footer>
         );
