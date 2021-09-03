@@ -22,14 +22,17 @@ class Header extends Component {
                 </NavLink>
                 <div className="nav-links">
                     <ul>
-                        <NavLink to="/apartmentIndex">Browse</NavLink>
+                        <NavLink to="/apartmentindex">Browse</NavLink>
+                    </ul>
+                    <ul>
+                        <NavLink to="/apartmentnew">Add a Listing</NavLink>
                     </ul>
                     <ul>
                         {logged_in &&
                             <a href={sign_out_route} >Sign Out</a>
                         }
                         {!logged_in &&
-                            <a href={sign_in_route} className='btn btn-secondary'>Sign In</a>
+                            <a href={sign_in_route} >Sign In/Sign Up </a>
                         }
                     </ul>
                 </div>

@@ -16,25 +16,7 @@ class Home extends Component {
         return (
             <div>
                 <h1>Welcome to Apartment Worlds!</h1>
-                <div className='home-page-nav'>  
-                    <ul>
-                        <a href='/apartmentIndex' className='btn btn-secondary'>Browse Apartments</a>
-                    </ul>
-                    
-                    <ul>
-                        {logged_in &&
-                            <h3>Welcome back {current_user.email} </h3>
-                        }
-                        {!logged_in &&
-                            <a href={new_user_route} className='btn btn-secondary'>Sign Up</a>
-                        }
-                        {!logged_in &&
-                            <a href={sign_in_route} className='btn btn-secondary'>Sign In</a>
-                        }
-                    </ul>
-                </div>
-                
-                
+                                
                 {/* {this.props.apartments && this.props.apartments.map((apartment) => {
                     return (
                         <div key={apartment.id}>
