@@ -59,6 +59,24 @@ class App extends Component {
     .catch(errors => console.log('Create errors:', errors))
   }
   
+  updateListing = (listing, id) => {
+    fetch(`/apartments/${id}`, {
+      body: JSON.stringify(listing),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("There was something wrong with the submission")
+      }
+      return response.json()
+    })
+    .then(() => this.getApartments())
+    .catch(errors => console.log('edit errors:', errors))
+  }
+
   render() {
     const {
       logged_in,
@@ -67,8 +85,6 @@ class App extends Component {
       sign_out_route,
       current_user
     } = this.props
-    console.log(this.state.apartments)
-    console.log(current_user.id)
     
     return (
       <>
@@ -85,8 +101,12 @@ class App extends Component {
             <Route path='/apartmentindex' render={(props) => 
               <ApartmentIndex apartments={ this.state.apartments} />} />
 
-            <Route path='/apartmentedit' component={ ApartmentEdit } />
-
+            {logged_in && 
+              <Route path='/apartmentedit/:id' render={ (props) => {
+                  let apartment = this.state.apartments.find(apartment => apartment.id === +props.match.params.id)
+                  return (<ApartmentEdit updateListing={this.updateListing} current_user={ current_user } apartment={ apartment } />)}} />
+            }
+            
             <Route path='/apartmentshow/:id' render={(props) => {
                 let id = props.match.params.id
                 let apartment = this.state.apartments.find(apartment => apartment.id === +id)

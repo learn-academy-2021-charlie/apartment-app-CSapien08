@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Card, Button, CardTitle, Row, Col, Collapse, CardBody, CardText } from 'reactstrap'
 
 class ApartmentShow extends Component {
     render() {
-        let {apartment} = this.props
+        let { apartment } = this.props
+        console.log(apartment)
         return (
             <div>
                 {apartment &&
@@ -20,6 +22,7 @@ class ApartmentShow extends Component {
                               Email: {apartment.email}
                     </CardText>
                 </Card>}
+                <NavLink to={`/apartmentedit/${apartment.id}`}>Update Listing</NavLink>
             </div>
         );
     }
